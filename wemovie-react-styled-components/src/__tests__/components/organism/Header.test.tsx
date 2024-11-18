@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '../../../utils/test-utils';
 import Header from '../../../components/organism/Header';
 
 describe('Deve renderizar o Header corretamente', () => {
