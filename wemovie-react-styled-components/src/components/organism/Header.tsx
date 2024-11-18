@@ -9,11 +9,11 @@ export default function Header({ ...props }: HeaderProps) {
         <HeaderStyled {...props}>
             <Heading
                 data-testid="header-heading"
-                config={{
+                $config={{
                     variant: 'h1',
                     fontWeight: 'font-bold',
-                    fontSize: 'text-20',
-                    color: 'text-white',
+                    fontSize: '20',
+                    color: 'white',
                 }}
             >
                 <a href="/" data-testid="header-link">

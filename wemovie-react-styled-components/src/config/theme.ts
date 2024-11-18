@@ -2,15 +2,35 @@ import { DefaultTheme } from 'styled-components';
 
 const ref = {
     fontSize: {
-        'text-20': '2rem',
+        '12': '0.75rem',
+        '14': '0.875rem',
+        '16': '1rem',
+        '20': '1.25rem',
+        '24': '1.5rem',
+        '64': '5.5rem',
     },
 
     fontWeight: {
-        'font-bold': 'bold',
+        'font-bold': '700',
+        'semi-bold': '600',
+        regular: '400',
     },
 
     colors: {
-        'text-white': 'white',
+        white: '#ffffff',
+        dark2: '#333333',
+        dark1: '#2F2E41',
+        blue2: '#009EDD',
+        blue1: '#0073A1',
+        green: '#039B00',
+        gray: '#999999',
+    },
+
+    padding: {
+        '8': '0.5rem',
+        '16': '1rem',
+        '24': '1.5rem',
+        '64': '4rem',
     },
 
     breakpoint: {
@@ -22,8 +42,19 @@ const ref = {
     },
 
     spacing: {
+        '4': '0.25rem',
+        '8': '0.5rem',
+        '10': '0.625rem',
+        '12': '0.75rem',
         '16': '1rem',
+        '21': '1.312rem',
         '24': '1.5rem',
+        '32': '2rem',
+        '64': '4rem',
+    },
+
+    borderWidth: {
+        'bw-1': '1px',
     },
 };
 
