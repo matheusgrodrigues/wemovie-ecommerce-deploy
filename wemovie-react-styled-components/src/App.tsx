@@ -1,17 +1,10 @@
-import React from 'react';
-import './App.css';
-
-import { styled } from 'styled-components';
-
-const Button = styled.button`
-    background: red;
-`;
+import BaseLayout from './components/BaseLayout/BaseLayout';
 
 function App() {
     return (
-        <div className="App">
-            <Button>Button Styled</Button>
-        </div>
+        <BaseLayout>
+            <>test</>
+        </BaseLayout>
     );
 }
 
