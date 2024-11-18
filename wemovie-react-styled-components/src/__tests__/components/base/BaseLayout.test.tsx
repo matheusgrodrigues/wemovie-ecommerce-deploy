@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
-
-import BaseLayout from '../../../components/BaseLayout/BaseLayout';
+import BaseLayout from '../../../components/base/BaseLayout';
 
 describe('Deve renderizar o BaseLayout corretamente', () => {
     const setupRender = () =>

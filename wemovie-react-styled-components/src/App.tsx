@@ -1,9 +1,9 @@
-import BaseLayout from './components/BaseLayout/BaseLayout';
+import BaseLayout from './components/base/BaseLayout';
 
 function App() {
     return (
         <BaseLayout>
-            <>test</>
+            <></>
         </BaseLayout>
     );
 }
