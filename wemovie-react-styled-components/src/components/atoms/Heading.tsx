@@ -1,26 +1,30 @@
 import styled from 'styled-components';
 
-interface HeadingProps {
+type HeadingConfig = {
+    variant: 'h1' | 'h2';
+    fontWeight: 'font-bold';
+    fontSize: '20';
+    color: 'white';
+};
+
+interface HeadingProps
+    extends Pick<React.DetailedHTMLProps<React.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>, 'style'> {
     children: React.ReactNode;
-    $config: {
-        variant: 'h1' | 'h2';
-        fontWeight: 'font-bold';
-        fontSize: '20';
-        color: 'white';
-    };
+    config: HeadingConfig;
     'data-testid'?: string;
 }
 
-export default function Heading({ children, $config, ...props }: HeadingProps) {
+export default function Heading({ children, config, ...props }: HeadingProps) {
+    const { variant } = config;
     return (
         <>
-            {$config.variant === 'h1' && (
-                <Heading1 $config={$config} data-testid={props['data-testid']}>
+            {variant === 'h1' && (
+                <Heading1 $config={config} data-testid={props['data-testid']} {...props}>
                     {children}
                 </Heading1>
             )}
-            {$config.variant === 'h2' && (
-                <Heading2 $config={$config} data-testid={props['data-testid']}>
+            {variant === 'h2' && (
+                <Heading2 $config={config} data-testid={props['data-testid']} {...props}>
                     {children}
                 </Heading2>
             )}
@@ -28,7 +32,9 @@ export default function Heading({ children, $config, ...props }: HeadingProps) {
     );
 }
 
-interface HeadingStyledProps extends HeadingProps {}
+interface HeadingStyledProps {
+    $config: HeadingConfig;
+}
 
 const Heading1 = styled.h1<HeadingStyledProps>`
     font-size: ${({ $config, theme }) => theme.ref.fontSize[$config.fontSize]};

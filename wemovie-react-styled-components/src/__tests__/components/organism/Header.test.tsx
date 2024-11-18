@@ -22,4 +22,22 @@ describe('Deve renderizar o Header corretamente', () => {
         expect(link).toBeInTheDocument();
         expect(link).toHaveProperty('href', 'http://localhost/');
     });
+
+    describe('Deve renderizar o RightSideCorretamente', () => {
+        it('Deve renderizar o RightSide', () => {
+            setupHeader();
+
+            const rightSide = screen.getByTestId('header-right-side');
+            expect(rightSide).toBeInTheDocument();
+        });
+
+        it('Deve renderizar o titulo "Meu Carrinho"', () => {
+            setupHeader();
+
+            const titulo = screen.getByTestId('header-right-side-item-heading');
+
+            expect(titulo).toBeInTheDocument();
+            expect(titulo).toHaveTextContent('Meu Carrinho');
+        });
+    });
 });

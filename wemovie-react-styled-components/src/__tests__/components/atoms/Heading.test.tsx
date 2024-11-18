@@ -8,10 +8,10 @@ it('Deve renderizar o component heading', () => {
         <ThemeProvider theme={defaultTheme}>
             <Heading
                 data-testid="header-heading"
-                $config={{
+                config={{
                     variant: 'h1',
                     fontWeight: 'font-bold',
-                    fontSize: 'text-20',
+                    fontSize: '20',
                     color: 'white',
                 }}
             >
