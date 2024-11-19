@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Heading from '../atoms/Heading';
+import Paragraph from '../atoms/Paragraph';
+import Icon from '../atoms/Icon';
 
 interface HeaderProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {}
 
@@ -46,41 +48,11 @@ export default function Header({ ...props }: HeaderProps) {
                     </Paragraph>
                 </HeaderRightSideItem>
 
-                <p>icone</p>
+                <Icon config={{ color: 'white', icon: 'shopping-bag', size: 24 }} />
             </HeaderRightSide>
         </HeaderStyled>
     );
 }
-
-type ParagraphConfig = {
-    fontWeight: 'semibold';
-    fontSize: '12';
-    color: 'gray';
-};
-
-interface ParagraphProps
-    extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement> {
-    children: React.ReactNode;
-    config: ParagraphConfig;
-}
-
-function Paragraph({ children, config, ...props }: ParagraphProps) {
-    return (
-        <ParagraphStyled $config={config} {...props}>
-            {children}
-        </ParagraphStyled>
-    );
-}
-
-interface ParagraphStyledProps {
-    $config: ParagraphConfig;
-}
-
-const ParagraphStyled = styled.p<ParagraphStyledProps>`
-    font-weight: ${({ theme, $config }) => theme.ref.fontWeight[$config.fontWeight]};
-    font-size: ${({ theme, $config }) => theme.ref.fontSize[$config.fontSize]};
-    color: ${({ theme, $config }) => theme.ref.colors[$config.color]};
-`;
 
 const HeaderStyled = styled.header`
     display: flex;
