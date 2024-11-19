@@ -2,7 +2,17 @@ import CardMovie from "../../../components/organism/CardMovie";
 import { render, screen } from "../../../utils/test-utils";
 
 describe("Deve renderizar o CardMovie corretamente", () => {
-   const setupRender = () => render(<CardMovie />);
+   const setupRender = () =>
+      render(
+         <CardMovie
+            movie={{
+               id: 1,
+               title: "Viúva Negra",
+               price: 9.99,
+               image: "https://wefit-react-web-test.s3.amazonaws.com/viuva-negra.png",
+            }}
+         />
+      );
 
    it("Deve renderizar a imagem", () => {
       setupRender();
