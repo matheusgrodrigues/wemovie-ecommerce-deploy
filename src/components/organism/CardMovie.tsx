@@ -33,17 +33,22 @@ export default function CardMovie({}: CardMovieProps) {
          </Paragraph>
 
          <Button
+            data-testid="card-movie-button"
             onClick={() => null}
             config={{
                variant: `${1 > 0 ? "success" : "primary"}`,
             }}
          >
             <CardMovieButtonIconContainer>
-               <Icon config={{ color: "white", icon: "shopping-cart", size: 13 }} />
-               <CardMovieButtonIconQuantity>{0}</CardMovieButtonIconQuantity>
+               <Icon
+                  data-testid="card-movie-button-icon"
+                  config={{ color: "white", icon: "shopping-cart", size: 13 }}
+               />
+               <CardMovieButtonIconQuantity data-testid="card-movie-button-quantity">{0}</CardMovieButtonIconQuantity>
             </CardMovieButtonIconContainer>
 
             <Paragraph
+               data-testid="card-movie-button-label"
                config={{
                   fontWeight: "bold",
                   fontSize: "12",
