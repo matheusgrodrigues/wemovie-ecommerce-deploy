@@ -1,1 +1,0 @@
-# WebMovie React + Styled Components
