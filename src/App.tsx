@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import BaseLayout from "./components/base/BaseLayout";
 import CardMovie from "./components/organism/CardMovie";
-import { MovieResponse, MovieSchema } from "./schema/MovieSchema";
 import EmptyState from "./components/organism/EmptyState/EmptyState";
+import ErrorState from "./components/organism/ErrorState/ErrorState";
+
+import { MovieResponse, MovieSchema } from "./schema/MovieSchema";
 
 function App() {
    const [movies, setMovies] = useState<MovieSchema[]>([]);
@@ -26,7 +28,7 @@ function App() {
             const movies = (await res.json()) as MovieResponse;
             setError(false);
 
-            //       setMovies(movies.products);
+            setMovies(movies.products);
          } catch (error) {
             setError(true);
             throw new Error("Erro ao buscar os filmes");
@@ -40,7 +42,7 @@ function App() {
       <BaseLayout>
          <MovieList data-testid="card-movie-list">
             {error ? (
-               <>Error</>
+               <ErrorState />
             ) : movies.length > 0 ? (
                movies.map((movie) => <CardMovie key={movie.id} data-testid="card-movie-list-item" movie={movie} />)
             ) : (
