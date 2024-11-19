@@ -7,11 +7,11 @@ import Icon from "../atoms/Icon";
 
 import { formatToBRL } from "../../utils/format";
 
-interface CardMovieProps {}
+interface CardMovieProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
 
-export default function CardMovie({}: CardMovieProps) {
+export default function CardMovie({ ...props }: CardMovieProps) {
    return (
-      <CardMovieStyled>
+      <CardMovieStyled {...props}>
          <CardMovieImage data-testid="card-movie-image" src="" alt="" />
 
          <Heading

@@ -5,11 +5,12 @@ import CardMovie from "./components/organism/CardMovie";
 function App() {
    return (
       <BaseLayout>
-         <MovieList>
-            <CardMovie />
-            <CardMovie />
-            <CardMovie />
-            <CardMovie />
+         <MovieList data-testid="card-movie-list">
+            <CardMovie data-testid="card-movie-list-item" />
+            <CardMovie data-testid="card-movie-list-item" />
+            <CardMovie data-testid="card-movie-list-item" />
+            <CardMovie data-testid="card-movie-list-item" />
+            <CardMovie data-testid="card-movie-list-item" />
          </MovieList>
       </BaseLayout>
    );
