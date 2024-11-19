@@ -3,27 +3,32 @@ import styled from "styled-components";
 import BaseLayout from "./components/base/BaseLayout";
 import CardMovie from "./components/organism/CardMovie";
 import { MovieResponse, MovieSchema } from "./schema/MovieSchema";
-
-const domain = process.env.REACT_APP_PUBLIC_DOMAIN;
+import EmptyState from "./components/organism/EmptyState/EmptyState";
 
 function App() {
    const [movies, setMovies] = useState<MovieSchema[]>([]);
+   const [error, setError] = useState(false);
 
    useEffect(() => {
       const movies = async () => {
          try {
-            const res = await fetch(`${domain}/data/movies.json`, {
+            const res = await fetch(`${process.env.REACT_APP_PUBLIC_DOMAIN}/data/movies.json`, {
                headers: {
                   "Content-Type": "application/json",
                },
             });
 
-            if (!res.ok) throw new Error(`Erro ao buscar os filmes: ${res.status}`);
+            if (!res.ok) {
+               setError(true);
+               throw new Error(`Erro ao buscar os filmes: ${res.status}`);
+            }
 
             const movies = (await res.json()) as MovieResponse;
+            setError(false);
 
             //       setMovies(movies.products);
          } catch (error) {
+            setError(true);
             throw new Error("Erro ao buscar os filmes");
          }
       };
@@ -34,9 +39,13 @@ function App() {
    return (
       <BaseLayout>
          <MovieList data-testid="card-movie-list">
-            {movies.map((movie) => (
-               <CardMovie key={movie.id} data-testid="card-movie-list-item" movie={movie} />
-            ))}
+            {error ? (
+               <>Error</>
+            ) : movies.length > 0 ? (
+               movies.map((movie) => <CardMovie key={movie.id} data-testid="card-movie-list-item" movie={movie} />)
+            ) : (
+               <EmptyState />
+            )}
          </MovieList>
       </BaseLayout>
    );
