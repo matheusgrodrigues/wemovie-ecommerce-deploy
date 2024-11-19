@@ -6,19 +6,22 @@ import Button from "../atoms/Button";
 import Icon from "../atoms/Icon";
 
 import { formatToBRL } from "../../utils/format";
+import { MovieSchema } from "../../schema/MovieSchema";
 
-interface CardMovieProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
+interface CardMovieProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+   movie: MovieSchema;
+}
 
-export default function CardMovie({ ...props }: CardMovieProps) {
+export default function CardMovie({ movie, ...props }: CardMovieProps) {
    return (
       <CardMovieStyled {...props}>
-         <CardMovieImage data-testid="card-movie-image" src="" alt="" />
+         <CardMovieImage data-testid="card-movie-image" src={movie.image} alt={movie.title} />
 
          <Heading
             data-testid="card-movie-title"
             config={{ variant: "h2", fontWeight: "bold", fontSize: "12", color: "dark2" }}
          >
-            {"movie.title"}
+            {movie.title}
          </Heading>
 
          <Paragraph
@@ -29,7 +32,7 @@ export default function CardMovie({ ...props }: CardMovieProps) {
                color: "dark1",
             }}
          >
-            {formatToBRL(9.99)}
+            {formatToBRL(movie.price)}
          </Paragraph>
 
          <Button
