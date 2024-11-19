@@ -36,7 +36,7 @@ const ref = {
     breakpoint: {
         sm: '640px',
         md: '768px',
-        lg: '1024px',
+        lg: '1080px',
         xl: '1280px',
         '2xl': '1440px',
     },
@@ -73,12 +73,10 @@ const utils = {
     },
 
     container: () => `
-        max-width: ${ref.breakpoint['2xl']};
-        padding: ${ref.spacing['16']};
+        max-width: ${ref.breakpoint['lg']};
+        padding: 0 ${ref.spacing['16']};
         margin: 0 auto;
         width: 100%;
-
-        ${utils.screen('md', `padding: ${ref.spacing['24']}`)};
     `,
 
     pxToRem: (px: number, base = 16) => `${px / base}rem`,
