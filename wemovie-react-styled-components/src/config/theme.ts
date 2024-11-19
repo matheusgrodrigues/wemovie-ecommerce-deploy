@@ -11,8 +11,8 @@ const ref = {
     },
 
     fontWeight: {
-        'font-bold': '700',
-        'semi-bold': '600',
+        bold: '700',
+        semibold: '600',
         regular: '400',
     },
 

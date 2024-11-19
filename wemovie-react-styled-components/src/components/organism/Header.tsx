@@ -11,7 +11,7 @@ export default function Header({ ...props }: HeaderProps) {
                 data-testid="header-heading"
                 config={{
                     variant: 'h1',
-                    fontWeight: 'font-bold',
+                    fontWeight: 'bold',
                     fontSize: '20',
                     color: 'white',
                 }}
@@ -27,7 +27,7 @@ export default function Header({ ...props }: HeaderProps) {
                         data-testid="header-right-side-item-heading"
                         config={{
                             variant: 'h2',
-                            fontWeight: 'font-bold',
+                            fontWeight: 'bold',
                             fontSize: '20',
                             color: 'white',
                         }}
@@ -35,7 +35,15 @@ export default function Header({ ...props }: HeaderProps) {
                         Meu Carrinho
                     </HeaderRightSideItemHeading>
 
-                    <p>itens</p>
+                    <Paragraph
+                        config={{
+                            fontWeight: 'semibold',
+                            fontSize: '12',
+                            color: 'gray',
+                        }}
+                    >
+                        <span data-testid="header-right-side-item-quantity">0</span> itens
+                    </Paragraph>
                 </HeaderRightSideItem>
 
                 <p>icone</p>
@@ -43,6 +51,36 @@ export default function Header({ ...props }: HeaderProps) {
         </HeaderStyled>
     );
 }
+
+type ParagraphConfig = {
+    fontWeight: 'semibold';
+    fontSize: '12';
+    color: 'gray';
+};
+
+interface ParagraphProps
+    extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement> {
+    children: React.ReactNode;
+    config: ParagraphConfig;
+}
+
+function Paragraph({ children, config, ...props }: ParagraphProps) {
+    return (
+        <ParagraphStyled $config={config} {...props}>
+            {children}
+        </ParagraphStyled>
+    );
+}
+
+interface ParagraphStyledProps {
+    $config: ParagraphConfig;
+}
+
+const ParagraphStyled = styled.p<ParagraphStyledProps>`
+    font-weight: ${({ theme, $config }) => theme.ref.fontWeight[$config.fontWeight]};
+    font-size: ${({ theme, $config }) => theme.ref.fontSize[$config.fontSize]};
+    color: ${({ theme, $config }) => theme.ref.colors[$config.color]};
+`;
 
 const HeaderStyled = styled.header`
     display: flex;

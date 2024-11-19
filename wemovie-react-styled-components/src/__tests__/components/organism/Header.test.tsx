@@ -39,5 +39,14 @@ describe('Deve renderizar o Header corretamente', () => {
             expect(titulo).toBeInTheDocument();
             expect(titulo).toHaveTextContent('Meu Carrinho');
         });
+
+        it('Deve renderizar a quantidade de itens no carrinho', () => {
+            setupHeader();
+
+            const quantity = screen.getByTestId('header-right-side-item-quantity');
+
+            expect(quantity).toBeInTheDocument();
+            expect(quantity.innerHTML.length).toBeGreaterThan(0);
+        });
     });
 });

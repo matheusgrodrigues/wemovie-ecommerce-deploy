@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 type HeadingConfig = {
     variant: 'h1' | 'h2';
-    fontWeight: 'font-bold';
+    fontWeight: 'bold';
     fontSize: '20';
     color: 'white';
 };
@@ -19,12 +19,12 @@ export default function Heading({ children, config, ...props }: HeadingProps) {
     return (
         <>
             {variant === 'h1' && (
-                <Heading1 $config={config} data-testid={props['data-testid']} {...props}>
+                <Heading1 $config={config} {...props}>
                     {children}
                 </Heading1>
             )}
             {variant === 'h2' && (
-                <Heading2 $config={config} data-testid={props['data-testid']} {...props}>
+                <Heading2 $config={config} {...props}>
                     {children}
                 </Heading2>
             )}
