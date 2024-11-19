@@ -48,7 +48,10 @@ export default function Header({ ...props }: HeaderProps) {
                     </Paragraph>
                 </HeaderRightSideItem>
 
-                <Icon config={{ color: 'white', icon: 'shopping-bag', size: 24 }} />
+                <Icon
+                    data-testid="header-right-side-item-icon"
+                    config={{ color: 'white', icon: 'shopping-bag', size: 24 }}
+                />
             </HeaderRightSide>
         </HeaderStyled>
     );

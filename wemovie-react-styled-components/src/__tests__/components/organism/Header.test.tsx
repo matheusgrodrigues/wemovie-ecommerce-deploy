@@ -48,5 +48,13 @@ describe('Deve renderizar o Header corretamente', () => {
             expect(quantity).toBeInTheDocument();
             expect(quantity.innerHTML.length).toBeGreaterThan(0);
         });
+
+        it('Deve renderizar o icone', () => {
+            setupHeader();
+
+            const icon = screen.getByTestId('header-right-side-item-icon');
+
+            expect(icon).toBeInTheDocument();
+        });
     });
 });
