@@ -3,6 +3,7 @@ import BaseLayout from "./components/base/BaseLayout";
 import App from "./App";
 import MovieService from "./services/MovieService";
 import { MovieResponse } from "./schemas/MovieSchema";
+import Cart from "./Cart";
 
 export interface LoaderHomeData {
    movies: MovieResponse;
@@ -14,14 +15,14 @@ const router = createBrowserRouter(
          <Route
             element={<App />}
             index
-            loader={() => {
-               return defer({
+            loader={() =>
+               defer({
                   movies: MovieService.getMovies(),
-               });
-            }}
+               })
+            }
          />
 
-         <Route element={<>Cart</>} path="cart" />
+         <Route element={<Cart />} path="cart" />
          <Route element={<>Cart</>} path="cart/purchase-completed" />
       </Route>
    )
