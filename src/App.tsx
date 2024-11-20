@@ -1,44 +1,37 @@
-import { useEffect, useState } from "react";
+import { Suspense } from "react";
+import { Await, useLoaderData } from "react-router";
+
 import styled from "styled-components";
-import BaseLayout from "./components/base/BaseLayout";
 import CardMovie from "./components/organism/CardMovie";
 import EmptyState from "./components/organism/EmptyState/EmptyState";
 import ErrorState from "./components/organism/ErrorState/ErrorState";
 
-import { MovieSchema } from "./schemas/MovieSchema";
-
-import MovieService from "./services/MovieService";
+import { LoaderHomeData } from "./routes";
+import { MovieResponse } from "./schemas/MovieSchema";
 
 function App() {
-   const [movies, setMovies] = useState<MovieSchema[]>([]);
-   const [error, setError] = useState(false);
-
-   useEffect(() => {
-      const movies = async () => {
-         try {
-            const movies = await MovieService.getMovies();
-            setError(false);
-            setMovies(movies.products);
-         } catch (error) {
-            setError(true);
-         }
-      };
-
-      movies();
-   }, []);
+   const { movies } = useLoaderData() as LoaderHomeData;
 
    return (
-      <BaseLayout>
-         <MovieList data-testid="card-movie-list">
-            {error ? (
-               <ErrorState />
-            ) : movies.length > 0 ? (
-               movies.map((movie) => <CardMovie key={movie.id} data-testid="card-movie-list-item" movie={movie} />)
-            ) : (
-               <EmptyState />
-            )}
-         </MovieList>
-      </BaseLayout>
+      <MovieList data-testid="card-movie-list">
+         <Suspense fallback={<>Loading...</>}>
+            <Await resolve={movies} errorElement={<ErrorState />}>
+               {({ products }: MovieResponse) => {
+                  return (
+                     <>
+                        {products.length > 0 ? (
+                           products.map((movie) => (
+                              <CardMovie key={movie.id} data-testid="card-movie-list-item" movie={movie} />
+                           ))
+                        ) : (
+                           <EmptyState />
+                        )}
+                     </>
+                  );
+               }}
+            </Await>
+         </Suspense>
+      </MovieList>
    );
 }
 

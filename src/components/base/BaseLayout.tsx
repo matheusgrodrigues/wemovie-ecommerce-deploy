@@ -1,23 +1,20 @@
-import styled from 'styled-components';
-import Header from '../organism/Header';
+import styled from "styled-components";
+import Header from "../organism/Header";
+import { Outlet } from "react-router";
 
-interface BaseLayoutProps {
-    children: React.ReactNode;
-}
-
-export default function BaseLayout({ children }: BaseLayoutProps) {
-    return (
-        <BaseLayoutContainer>
-            <Header data-testid="header" />
-            {children}
-        </BaseLayoutContainer>
-    );
+export default function BaseLayout() {
+   return (
+      <BaseLayoutContainer>
+         <Header data-testid="header" />
+         <Outlet />
+      </BaseLayoutContainer>
+   );
 }
 
 const BaseLayoutContainer = styled.main`
-    display: flex;
-    flex-direction: column;
-    background: ${({ theme }) => theme.ref.colors['dark1']};
+   display: flex;
+   flex-direction: column;
+   background: ${({ theme }) => theme.ref.colors["dark1"]};
 
-    ${({ theme }) => theme.utils.container()}
+   ${({ theme }) => theme.utils.container()}
 `;

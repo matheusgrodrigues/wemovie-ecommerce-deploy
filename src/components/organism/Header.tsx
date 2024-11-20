@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Heading from "../atoms/Heading";
 import Paragraph from "../atoms/Paragraph";
@@ -9,6 +10,8 @@ interface HeaderProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLE
 
 export default function Header({ ...props }: HeaderProps) {
    const { cart } = useContext(CartContextProvider);
+
+   const navigate = useNavigate();
 
    return (
       <HeaderStyled {...props}>
@@ -21,12 +24,10 @@ export default function Header({ ...props }: HeaderProps) {
                color: "white",
             }}
          >
-            <a href="/" data-testid="header-link">
-               WeMovies
-            </a>
+            <Link to="/">WeMovies</Link>
          </Heading>
 
-         <HeaderRightSide data-testid="header-right-side">
+         <HeaderRightSide data-testid="header-right-side" onClick={() => navigate("/cart")}>
             <HeaderRightSideItem>
                <HeaderRightSideItemHeading
                   data-testid="header-right-side-item-heading"

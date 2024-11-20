@@ -41,7 +41,7 @@ export default function CartContext({ children }: CartContextProps) {
       setCart((prevCart) => prevCart.filter((item) => item.id !== id));
    }, []);
 
-   const filterItemsById = useCallback((id: number) => cart.filter((item) => item.id == id), [cart]);
+   const filterItemsById = useCallback((id: number) => cart.filter((item) => item.id === id), [cart]);
 
    const getUniqueItems = useCallback(() => {
       const uniqueItemsMap = new Map<number, MovieSchema>();
