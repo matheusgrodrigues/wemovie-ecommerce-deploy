@@ -1,9 +1,10 @@
 import { createRoutesFromElements, createBrowserRouter, Route, defer } from "react-router-dom";
 import BaseLayout from "./components/base/BaseLayout";
-import App from "./App";
 import MovieService from "./services/MovieService";
 import { MovieResponse } from "./schemas/MovieSchema";
-import Cart from "./Cart";
+import PurchaseCompleted from "./pages/purchase-completed/Purchase-completed";
+import App from "./pages/home/App";
+import Cart from "./pages/cart/Cart";
 
 export interface LoaderHomeData {
    movies: MovieResponse;
@@ -23,7 +24,7 @@ const router = createBrowserRouter(
          />
 
          <Route element={<Cart />} path="cart" />
-         <Route element={<>Cart</>} path="cart/purchase-completed" />
+         <Route element={<PurchaseCompleted />} path="cart/purchase-completed" />
       </Route>
    )
 );

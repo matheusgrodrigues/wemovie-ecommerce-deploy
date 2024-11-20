@@ -1,13 +1,13 @@
 import { useCallback, useContext } from "react";
-import { CartContextProvider } from "./components/CartContext";
+import { CartContextProvider } from "../../components/CartContext";
 import { useNavigate } from "react-router";
-import { MovieSchema } from "./schemas/MovieSchema";
-import Heading from "./components/atoms/Heading";
-import Paragraph from "./components/atoms/Paragraph";
-import { formatToBRL } from "./utils/format";
-import Icon from "./components/atoms/Icon";
-import EmptyState from "./components/organism/EmptyState/EmptyState";
-import Button from "./components/atoms/Button";
+import { MovieSchema } from "../../schemas/MovieSchema";
+import Heading from "../../components/atoms/Heading";
+import Paragraph from "../../components/atoms/Paragraph";
+import { formatToBRL } from "../../utils/format";
+import Icon from "../../components/atoms/Icon";
+import EmptyState from "../../components/organism/EmptyState/EmptyState";
+import Button from "../../components/atoms/Button";
 
 export default function Cart() {
    const { removeSingleItemById, removeItemsById, getUniqueItems, getAmount, addItem, cart } =

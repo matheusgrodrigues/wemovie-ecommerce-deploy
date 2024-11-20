@@ -1,4 +1,4 @@
-import App from "../App";
+import App from "../pages/home/App";
 import { render, screen } from "../utils/test-utils";
 
 /* TODO: corrigir dados mockados

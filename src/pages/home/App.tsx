@@ -2,12 +2,12 @@ import { Suspense } from "react";
 import { Await, useLoaderData } from "react-router";
 
 import styled from "styled-components";
-import CardMovie from "./components/organism/CardMovie";
-import EmptyState from "./components/organism/EmptyState/EmptyState";
-import ErrorState from "./components/organism/ErrorState/ErrorState";
+import CardMovie from "../../components/organism/CardMovie";
+import EmptyState from "../../components/organism/EmptyState/EmptyState";
+import ErrorState from "../../components/organism/ErrorState/ErrorState";
 
-import { LoaderHomeData } from "./routes";
-import { MovieResponse } from "./schemas/MovieSchema";
+import { LoaderHomeData } from "../../routes";
+import { MovieResponse } from "../../schemas/MovieSchema";
 
 function App() {
    const { movies } = useLoaderData() as LoaderHomeData;
