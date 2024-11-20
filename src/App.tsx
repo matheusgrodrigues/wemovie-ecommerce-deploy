@@ -5,7 +5,9 @@ import CardMovie from "./components/organism/CardMovie";
 import EmptyState from "./components/organism/EmptyState/EmptyState";
 import ErrorState from "./components/organism/ErrorState/ErrorState";
 
-import { MovieResponse, MovieSchema } from "./schema/MovieSchema";
+import { MovieSchema } from "./schemas/MovieSchema";
+
+import MovieService from "./services/MovieService";
 
 function App() {
    const [movies, setMovies] = useState<MovieSchema[]>([]);
@@ -14,24 +16,11 @@ function App() {
    useEffect(() => {
       const movies = async () => {
          try {
-            const res = await fetch(`${process.env.REACT_APP_PUBLIC_DOMAIN}/data/movies.json`, {
-               headers: {
-                  "Content-Type": "application/json",
-               },
-            });
-
-            if (!res.ok) {
-               setError(true);
-               throw new Error(`Erro ao buscar os filmes: ${res.status}`);
-            }
-
-            const movies = (await res.json()) as MovieResponse;
+            const movies = await MovieService.getMovies();
             setError(false);
-
             setMovies(movies.products);
          } catch (error) {
             setError(true);
-            throw new Error("Erro ao buscar os filmes");
          }
       };
 

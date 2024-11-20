@@ -6,13 +6,17 @@ import Button from "../atoms/Button";
 import Icon from "../atoms/Icon";
 
 import { formatToBRL } from "../../utils/format";
-import { MovieSchema } from "../../schema/MovieSchema";
+import { MovieSchema } from "../../schemas/MovieSchema";
+import { useContext } from "react";
+import { CartContextProvider } from "../CartContext";
 
 interface CardMovieProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
    movie: MovieSchema;
 }
 
 export default function CardMovie({ movie, ...props }: CardMovieProps) {
+   const { addItem, filterItemsById } = useContext(CartContextProvider);
+
    return (
       <CardMovieStyled {...props}>
          <CardMovieImage data-testid="card-movie-image" src={movie.image} alt={movie.title} />
@@ -37,9 +41,9 @@ export default function CardMovie({ movie, ...props }: CardMovieProps) {
 
          <Button
             data-testid="card-movie-button"
-            onClick={() => null}
+            onClick={() => addItem(movie)}
             config={{
-               variant: `${1 > 0 ? "success" : "primary"}`,
+               variant: `${filterItemsById(movie.id).length > 0 ? "success" : "primary"}`,
             }}
          >
             <CardMovieButtonIconContainer>
@@ -47,7 +51,9 @@ export default function CardMovie({ movie, ...props }: CardMovieProps) {
                   data-testid="card-movie-button-icon"
                   config={{ color: "white", icon: "shopping-cart", size: 13 }}
                />
-               <CardMovieButtonIconQuantity data-testid="card-movie-button-quantity">{0}</CardMovieButtonIconQuantity>
+               <CardMovieButtonIconQuantity data-testid="card-movie-button-quantity">
+                  {filterItemsById(movie.id).length}
+               </CardMovieButtonIconQuantity>
             </CardMovieButtonIconContainer>
 
             <Paragraph
