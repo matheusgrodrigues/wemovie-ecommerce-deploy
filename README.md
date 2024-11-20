@@ -34,3 +34,5 @@ O objetivo é me preparar para o teste técnico do grupo pecége para relembrar 
 -  React Router DOM.
 -  Refatoring.
 -  Priorização e Processos.
+-  FetchAPI.
+-  Clean Architecture.
