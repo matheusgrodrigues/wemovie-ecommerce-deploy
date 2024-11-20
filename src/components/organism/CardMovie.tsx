@@ -6,7 +6,7 @@ import Button from "../atoms/Button";
 import Icon from "../atoms/Icon";
 
 import { formatToBRL } from "../../utils/format";
-import { MovieSchema } from "../../schema/MovieSchema";
+import { MovieSchema } from "../../schemas/MovieSchema";
 
 interface CardMovieProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
    movie: MovieSchema;

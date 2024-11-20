@@ -1,4 +1,4 @@
-import { MovieResponse } from "../schema/MovieSchema";
+import { MovieResponse } from "../schemas/MovieSchema";
 
 const MovieService = {
    getMovies: async (): Promise<MovieResponse> => {

@@ -5,7 +5,7 @@ import CardMovie from "./components/organism/CardMovie";
 import EmptyState from "./components/organism/EmptyState/EmptyState";
 import ErrorState from "./components/organism/ErrorState/ErrorState";
 
-import { MovieSchema } from "./schema/MovieSchema";
+import { MovieSchema } from "./schemas/MovieSchema";
 
 import MovieService from "./services/MovieService";
 
